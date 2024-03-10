@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+
+    <link rel="stylesheet" href="../styles/pages/index.css">
+    <link rel="stylesheet" href="../styles/pages/dashboard.css">
+    <link rel="stylesheet" href="../styles/colors.css">
+    <link rel="stylesheet" href="../styles/buttons.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    
+    <header class="flex align-center">
+        
+        <h1>
+            <a href="/index.html" class="white-text">Expense Tracker</a>
+        </h1>
+        <nav class="flex center">
+            <a href=" " class="button-style white-text shadow" id="header-login-btn">Log out</a>
+        </nav>        
+    </header>
+
+    <section class="edits flex justify-around gap">
+        <div class="card flex column gap border-radius w-full">
+            <h3>Add/Remove</h3>
+            <input type="text" placeholder="Description"/>
+            <input type="number" placeholder="Amount"/>
+            <select name="currency" id="tnx_currency">
+                <option value="USD">US Dollars</option>
+                <option value="LBP">Lebanese Pounds</option>
+            </select>
+            <select name="tnx_type" id="tnx_type">
+                <option value="In">Income</option>
+                <option value="Out">Expense</option>
+            </select>
+            <button class="button-style"> ADD </button>
+        </div>
+
+        <div class="card flex column gap border-radius w-full">
+            <h3> Total balance</h3>
+            <div class="balance border-radius" id="total_balance"></div>
+        </div>
+
+        <div class="card flex column gap border-radius logs w-full">
+            <h3> Logs</h3>
+            <div class="balance border-radius" id="total_balance"></div>
+        </div>
+
+    </section>
+
+
+
+    <script src="./scripts/index.js"></script>
+</body>
+</html>
+

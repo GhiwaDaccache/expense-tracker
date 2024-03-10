@@ -1,0 +1,41 @@
+select{
+    outline: none;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px gray solid;
+}
+
+.edits{
+    padding: 120px 30px 0px 30px;
+    flex-wrap: wrap;
+}
+
+.edits h3{
+    text-align: center;
+}
+
+.balance{
+    height: 60px;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    font-size: large;
+}
+
+
+.logs{
+    height: 290.4px;
+    flex-grow: 2;
+}
+
+
+@media (max-width:780px){
+    nav a{
+        font-size: 13px;
+    }
+
+    .edits{
+        justify-content: center;
+    }
+}
+

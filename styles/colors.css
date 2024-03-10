@@ -13,3 +13,7 @@ body{
 .red-text{
     color: rgb(148, 0, 0);
 }
+
+.card{
+    background-color: rgba(199, 162, 234, 0.601);
+}

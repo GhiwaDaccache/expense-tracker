@@ -26,20 +26,8 @@ input{
     padding: 20px;
     max-width: 300px;
 }
-.card img{
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-}
 
-.card p{
-    font-size: 14px;
-    color: rgb(142, 138, 138);
-}
-
-
-
-@media (max-width:768px){
+@media (max-width:780px){
     nav a{
         font-size: 13px;
     }
