@@ -29,33 +29,64 @@
         </nav>        
     </header>
 
-    <section class="edits flex justify-around gap">
-        <div class="card flex column gap border-radius w-full">
-            <h3>Add/Remove</h3>
-            <input type="text" placeholder="Description"/>
-            <input type="number" placeholder="Amount"/>
-            <select name="currency" id="tnx_currency">
-                <option value="USD">US Dollars</option>
-                <option value="LBP">Lebanese Pounds</option>
-            </select>
-            <select name="tnx_type" id="tnx_type">
-                <option value="In">Income</option>
-                <option value="Out">Expense</option>
-            </select>
-            <button class="button-style"> ADD </button>
-        </div>
+    <section class="flex justify-between flex-wrap">
+        <section class="flex column ">
+            <section class="income-section flex justify-around gap">
+                <div class="card flex column gap border-radius w-full">
+                    <h3>Add income</h3>
+                    <input type="text" placeholder="Description"/>
+                    <input type="number" placeholder="Amount"/>
+                    <select name="currency" id="tnx_currency">
+                        <option value="USD">US Dollars</option>
+                        <option value="LBP">Lebanese Pounds</option>
+                    </select>
+                    <button class="button-style"> ADD </button>
+                </div>
 
-        <div class="card flex column gap border-radius w-full">
-            <h3> Total balance</h3>
-            <div class="balance border-radius" id="total_balance"></div>
-        </div>
+                <div class="card flex column gap border-radius w-full">
+                    <h3> Income balance</h3>
+                    <div class="balance border-radius" id="income-balance"></div>
+                </div>
 
-        <div class="card flex column gap border-radius logs w-full">
-            <h3> Logs</h3>
-            <div class="balance border-radius" id="total_balance"></div>
-        </div>
+                <div class="card flex column gap border-radius logs w-full">
+                    <h3> Income logs</h3>
+                    <div class="balance border-radius"></div>
+                </div>
 
+            </section>
+
+            <section class="flex justify-around gap outcome-section">
+                <div class="card flex column gap border-radius w-full">
+                    <h3>Add expense</h3>
+                    <input type="text" placeholder="Description"/>
+                    <input type="number" placeholder="Amount"/>
+                    <select name="currency" id="tnx_currency">
+                        <option value="USD">US Dollars</option>
+                        <option value="LBP">Lebanese Pounds</option>
+                    </select>
+                    <button class="button-style"> ADD </button>
+                </div>
+
+                <div class="card flex column gap border-radius w-full">
+                    <h3> Expenses balance</h3>
+                    <div class="balance border-radius" id="expenses-balance"></div>
+                </div>
+
+                <div class="card flex column gap border-radius logs w-full">
+                    <h3> Outcome logs</h3>
+                    <div class="balance border-radius"></div>
+                </div>
+
+            </section>
+        </section>
+
+        <section class="income-section flex">
+            <div class="card flex column gap border-radius logs w-full">
+                <h3> Total balance</h3>
+            <div class="balance border-radius"></div>
+        </section>
     </section>
+
 
 
 
