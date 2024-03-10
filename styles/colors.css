@@ -5,3 +5,11 @@ header{
 .white-text{
     color:whitesmoke;
 }
+
+body{
+    background-color:#eaeae7 ;
+}
+
+.red-text{
+    color: rgb(148, 0, 0);
+}

@@ -1,7 +1,11 @@
 .button-style{
-    padding: 10px 15px;
+    padding: 5px 10px;
     border-radius: 20px;
     cursor: pointer;
+    border-style: solid;
+    border-width: 1px;
+    max-height: 60%;
+    background-color: rgba(124, 124, 124, 0.679);;
 }
 
 .button-style:hover{
