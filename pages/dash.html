@@ -60,9 +60,27 @@
         </form>
     </div>
 
+    <div class="form-popup" name="filterForm">
+        <form id="filterForm" class="form-container">
+          <h1>Filter Transactions</h1>
+      
+          <input type="text" placeholder="Enter From Amount" id="fromAmountFilter">
+          <input type="text" placeholder="Enter To Amount" id="toAmountFilter">
+      
+          <select id="currencyFilter"></select>
+      
+          <select id="typeFilter">
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+            </select>
+          <button type="submit" class="btn">Filter</button>
+        </form>
+    </div>
+
 
 
       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
       <script src="../scripts/dash.js"></script>
       
 </body>
+</html>
