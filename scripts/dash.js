@@ -6,6 +6,7 @@ const totalElement = document.getElementById('total');
 // waits till elements added in html
 document.addEventListener('DOMContentLoaded', function() { 
     document.getElementById('addForm').addEventListener('submit', addTransaction);   
+    document.getElementById('filterForm').addEventListener('submit', filterTransactions);
 
     currencyApiResult.then((response) => { 
         let currencies = response.data;
@@ -57,11 +58,11 @@ const loadTransactions=()=>{
     }
 
     
-    let delteBtns = document.querySelectorAll('[name="delete"]');
-    for (let i = 0; i< delteBtns.length; i++)
+    let deleteBtns = document.querySelectorAll('[name="delete"]');
+    for (let i = 0; i< deleteBtns.length; i++)
     {
-        const elementId = delteBtns[i].id;
-        delteBtns[i].addEventListener('click', function() {
+        const elementId = deleteBtns[i].id;
+        deleteBtns[i].addEventListener('click', function() {
             deleteTransaction(elementId);
         });
     }
@@ -127,6 +128,31 @@ function searchById(array, id) {
     return null; 
 }
 
+
+function filterTransactions(event)
+{
+    let amountFrom = event.target.fromAmountFilter.value;
+    let amountTo = event.target.toAmountFilter.value;
+    let currency = event.target.currencyFilter.value;
+    let type = event.target.typeFilter.value;
+    transactions = JSON.parse(window.localStorage.getItem('transactions'));
+    let filtered = transactions.filter(item => item[amount] > amountFrom);
+    
+    alert(filtered.length);
+    transactionsContainer.innerHTML = "";
+    filtered.map((transaction,i)=>{
+
+        transactionsContainer.innerHTML+=`<tr class="table__row">
+            <td class="table__balance table__cell u-text-right u-font-mono">${transaction.id}</td>
+            <td class="table__limit table__cell u-text-right u-font-mono">${transaction.amount}</td>
+            <td class="table__available table__cell u-text-right u-font-mono">${transaction.currency}</td>
+            <td class="table__transfer table__cell u-text-center">${transaction.description}</td>
+            <td class="table__transfer table__cell u-text-center">${transaction.type}</td>
+            <td class="table__transfer table__cell u-text-center"><button class="btn" name="edit" id="edit-${transaction.id}">Edit</button></td>
+            <td class="table__transfer table__cell u-text-center"><button class="btn" name="delete" id="delete-${transaction.id}">Delete</button></td>
+        </tr>`
+    })
+}
 
 
 loadTransactions();
