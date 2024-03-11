@@ -67,6 +67,8 @@ const loadTransactions=()=>{
         });
     }
 
+    const total = getTotal();
+    totalElement.innerHTML = total;
     
 }
 
@@ -128,6 +130,28 @@ function searchById(array, id) {
     return null; 
 }
 
+function getTotal() {
+    transactions = JSON.parse(window.localStorage.getItem('transactions'));
+    let sum = 0;
+    for (let i = 0; i < transactions.length; i++)
+    {
+        currency = transactions[i].currency;
+        amount = transactions[i].amount;
+        const postData = {
+            "from": currency,
+            "to": 'USD',
+            "amount": amount
+            };
+        axios.post("https://rich-erin-angler-hem.cyclic.app/students/available/convert", postData)
+            .then(function (response) {
+                console.log(response.data);
+                sum = sum + response.data;
+                alert('Check the console for response data.');
+            });
+    }
+    return sum;
+}
+
 
 function filterTransactions(event)
 {
@@ -138,7 +162,6 @@ function filterTransactions(event)
     transactions = JSON.parse(window.localStorage.getItem('transactions'));
     let filtered = transactions.filter(item => item[amount] > amountFrom);
     
-    alert(filtered.length);
     transactionsContainer.innerHTML = "";
     filtered.map((transaction,i)=>{
 
