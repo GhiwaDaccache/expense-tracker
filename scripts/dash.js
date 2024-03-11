@@ -2,9 +2,30 @@ const transactionsContainer = document.getElementById('transactions');
 const currencyApiResult = axios.get("https://rich-erin-angler-hem.cyclic.app/students/available");
 const totalElement = document.getElementById('total');
 
-document.addEventListener('DOMContentLoaded', function() { // wait till elements added in html
+
+// waits till elements added in html
+document.addEventListener('DOMContentLoaded', function() { 
     document.getElementById('addForm').addEventListener('submit', addTransaction);   
+
+    currencyApiResult.then((response) => { 
+        let currencies = response.data;
+        const selectElement = document.getElementById('currency');
+        const selectFilterElement = document.getElementById('currencyFilter');
+            currencies.forEach(currency => {
+            const optionElement = document.createElement('option');
+            const optionFilterElement = document.createElement('option');
+    
+            optionElement.value = currency.code;
+            optionElement.textContent = currency.name;
+            optionFilterElement.value = currency.code;
+            optionFilterElement.textContent = currency.name;
+    
+            selectElement.appendChild(optionElement);
+            selectFilterElement.appendChild(optionFilterElement);
+        });
+    });
 });
+
 
 
 
@@ -83,15 +104,15 @@ function addTransaction(event) {
 
 function editTransaction(elementId) {
     transactions = JSON.parse(window.localStorage.getItem('transactions'));
-    let modifiedId = elementId.replace("edit-", "");
-    let editElement = searchById(transactions, modifiedId);
+    let newId = elementId.replace("edit-", "");
+    let editElement = searchById(transactions, newId);
 
 }
 
 function deleteTransaction(elementId) {
     transactions = JSON.parse(window.localStorage.getItem('transactions'));
-    let modifiedId = elementId.replace("delete-", "");
-    let index = transactions.findIndex(item => item.id == modifiedId);
+    let newId = elementId.replace("delete-", "");
+    let index = transactions.findIndex(item => item.id == newId);
     transactions.splice(index, 1);
     window.localStorage.setItem('transactions', JSON.stringify(transactions));
     window.location.reload();
