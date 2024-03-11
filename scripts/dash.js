@@ -1,4 +1,10 @@
 const transactionsContainer = document.getElementById('transactions');
+const currencyApiResult = axios.get("https://rich-erin-angler-hem.cyclic.app/students/available");
+const totalElement = document.getElementById('total');
+
+document.addEventListener('DOMContentLoaded', function() { // wait till elements added in html
+    document.getElementById('addForm').addEventListener('submit', addTransaction);   
+});
 
 
 
@@ -19,6 +25,25 @@ const loadTransactions=()=>{
             <td class="table__transfer table__cell u-text-center"><button class="btn" name="delete" id="delete-${transaction.id}">Delete</button></td>
         </tr>`
     })
+
+    let editBtns = document.querySelectorAll('[name="edit"]');
+    for (let i = 0; i< editBtns.length; i++)
+    {
+        const elementId = editBtns[i].id;
+        editBtns[i].addEventListener('click', function() {
+            editTransaction(elementId);
+        });
+    }
+
+    
+    let delteBtns = document.querySelectorAll('[name="delete"]');
+    for (let i = 0; i< delteBtns.length; i++)
+    {
+        const elementId = delteBtns[i].id;
+        delteBtns[i].addEventListener('click', function() {
+            deleteTransaction(elementId);
+        });
+    }
 
     
 }
@@ -55,6 +80,32 @@ function addTransaction(event) {
     window.localStorage.setItem('transactions', JSON.stringify(transactions));
     window.location.reload();
 }
+
+function editTransaction(elementId) {
+    transactions = JSON.parse(window.localStorage.getItem('transactions'));
+    let modifiedId = elementId.replace("edit-", "");
+    let editElement = searchById(transactions, modifiedId);
+
+}
+
+function deleteTransaction(elementId) {
+    transactions = JSON.parse(window.localStorage.getItem('transactions'));
+    let modifiedId = elementId.replace("delete-", "");
+    let index = transactions.findIndex(item => item.id == modifiedId);
+    transactions.splice(index, 1);
+    window.localStorage.setItem('transactions', JSON.stringify(transactions));
+    window.location.reload();
+}
+
+function searchById(array, id) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].id == id) {
+            return array[i]; 
+        }
+    }
+    return null; 
+}
+
 
 
 loadTransactions();

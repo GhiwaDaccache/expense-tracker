@@ -36,6 +36,7 @@
     
         <tbody id="transactions">    
         </tbody>
+    
 
         </table>
     </div>
@@ -47,17 +48,19 @@
       
           <input type="text" placeholder="Enter Amount" id="amount" required>
       
-          <select name="currency" id="currency"></select>
+          <select id="currency"></select>
       
           <input type="text" placeholder="Enter Description" id="description" required>
 
-          <select name="type" id="type">
+          <select id="type">
                 <option value="Income">Income</option>
                 <option value="Expense">Expense</option>
             </select>
           <button type="submit" class="btn">Add</button>
         </form>
-      </div>
+    </div>
+
+
 
       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
       <script src="../scripts/dash.js"></script>
