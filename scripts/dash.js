@@ -37,14 +37,14 @@ const loadTransactions=()=>{
 
     transactions.map((transaction,i)=>{
 
-        transactionsContainer.innerHTML+=`<tr class="table__row">
-            <td class="table__balance table__cell u-text-right u-font-mono">${transaction.id}</td>
-            <td class="table__limit table__cell u-text-right u-font-mono">${transaction.amount}</td>
-            <td class="table__available table__cell u-text-right u-font-mono">${transaction.currency}</td>
-            <td class="table__transfer table__cell u-text-center">${transaction.description}</td>
-            <td class="table__transfer table__cell u-text-center">${transaction.type}</td>
-            <td class="table__transfer table__cell u-text-center"><button class="btn" name="edit" id="edit-${transaction.id}">Edit</button></td>
-            <td class="table__transfer table__cell u-text-center"><button class="btn" name="delete" id="delete-${transaction.id}">Delete</button></td>
+        transactionsContainer.innerHTML+=`<tr class="table_row">
+            <td class="table-cell text-right">${transaction.id}</td>
+            <td class="table-cell text-right">${transaction.amount}</td>
+            <td class="table-cell text-right">${transaction.currency}</td>
+            <td class="table-cell text-center">${transaction.description}</td>
+            <td class="table-cell text-center">${transaction.type}</td>
+            <td class="table-cell text-center"><button class="btn button-style" name="edit" id="edit-${transaction.id}">Edit</button></td>
+            <td class="table-cell text-center"><button class="btn button-style" name="delete" id="delete-${transaction.id}">Delete</button></td>
         </tr>`
     })
 
@@ -142,12 +142,15 @@ function getTotal() {
             "to": 'USD',
             "amount": amount
             };
-        axios.post("https://rich-erin-angler-hem.cyclic.app/students/available/convert", postData)
-            .then(function (response) {
-                console.log(response.data);
-                sum = sum + response.data;
+        
+            const transformCurrency = async () => {
+                const { data } = await axios.post("https://rich-erin-angler-hem.cyclic.app/students/available/convert", postData);
+                console.log(data);
+                sum = sum + data;
                 alert('Check the console for response data.');
-            });
+            };
+            transformCurrency()
+
     }
     return sum;
 }
@@ -165,14 +168,14 @@ function filterTransactions(event)
     transactionsContainer.innerHTML = "";
     filtered.map((transaction,i)=>{
 
-        transactionsContainer.innerHTML+=`<tr class="table__row">
-            <td class="table__balance table__cell u-text-right u-font-mono">${transaction.id}</td>
-            <td class="table__limit table__cell u-text-right u-font-mono">${transaction.amount}</td>
-            <td class="table__available table__cell u-text-right u-font-mono">${transaction.currency}</td>
-            <td class="table__transfer table__cell u-text-center">${transaction.description}</td>
-            <td class="table__transfer table__cell u-text-center">${transaction.type}</td>
-            <td class="table__transfer table__cell u-text-center"><button class="btn" name="edit" id="edit-${transaction.id}">Edit</button></td>
-            <td class="table__transfer table__cell u-text-center"><button class="btn" name="delete" id="delete-${transaction.id}">Delete</button></td>
+        transactionsContainer.innerHTML+=`<tr class="table_row">
+            <td class="table-cell text-right">${transaction.id}</td>
+            <td class="table-cell text-right">${transaction.amount}</td>
+            <td class="table-cell text-right">${transaction.currency}</td>
+            <td class="table-cell text-center">${transaction.description}</td>
+            <td class="table-cell text-center">${transaction.type}</td>
+            <td class="table-cell text-center"><button class="btn button-style" name="edit" id="edit-${transaction.id}">Edit</button></td>
+            <td class="table-cell text-center"><button class="btn button-style" name="delete" id="delete-${transaction.id}">Delete</button></td>
         </tr>`
     })
 }

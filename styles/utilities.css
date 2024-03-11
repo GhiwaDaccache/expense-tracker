@@ -44,7 +44,7 @@ section{
 }
 
 .gap{
-    gap: 10px;
+    gap: 20px;
 }
 
 .h-full{
@@ -53,6 +53,18 @@ section{
 
 .w-full{
     width: 100vw;
+}
+
+.text-left {
+    text-align: left;
+}
+  
+.text-right {
+    text-align: right;
+}
+  
+.text-center {
+    text-align: center;
 }
 
 

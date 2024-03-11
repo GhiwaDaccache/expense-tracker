@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
 
-    <link rel="stylesheet" href="../styles/pages/index.css">
-    <link rel="stylesheet" href="../styles/pages/dashboard.css">
+    <link rel="stylesheet" href="../styles/pages/dash.css">
     <link rel="stylesheet" href="../styles/colors.css">
     <link rel="stylesheet" href="../styles/buttons.css">
     <link rel="stylesheet" href="../styles/utilities.css">
-    <link rel="stylesheet" href="../styles/grid.css">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,68 +17,90 @@
 
 </head>
 <body>
-    <div class="table__wrap">
-    <table class="table">
-        <thead class="table__header">
-            <tr class="table__row">
-            <th class="table__cell u-text-left">Transaction ID</th>
-            <th class="table__cell u-text-right">Amount</th>
-            <th class="table__cell u-text-right">Currency</th>
-            <th class="table__cell u-text-right">Description</th>
-            <th class="table__cell u-text-right">Type</th>
-            <th class="table__cell u-text-right">Action</th>
-            <th class="table__cell u-text-right"></th>
-            <th></th>
-            </tr>
-        </thead>
+
+    <header class="flex center">
+        <h1>
+            <a href="" class="white-text">Expense Tracker</a>
+        </h1>        
+    </header>
+
+    <section class="flex center column test table-container gap">
+        <div class="table flex center">
+        <table>
+            <thead>
+                <tr class="table-head">
+                <th class="table-cell">Transaction ID</th>
+                <th class="table-cell">Amount</th>
+                <th class="table-cell">Currency</th>
+                <th class="table-cell">Description</th>
+                <th class="table-cell">Type</th>
+                <th class="table-cell">Edit</th>
+                <th class="table-cell">Delete</th>
+                <th></th>
+                </tr>
+            </thead>
     
         <tbody id="transactions">    
         </tbody>
     
+        <tfoot>
+        
+            <tr class="table__row table__row--last">
+                <td class="table-cell">Total (USD): </td>
+                <td class="table-cell text-right" id="total"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+    
+        </tfoot>
 
         </table>
     </div>
 
-    <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_popup_form -->
-    <div class="form-popup" name="addForm">
-        <form id="addForm" class="form-container">
-          <h1>Add Transaction</h1>
-      
-          <input type="text" placeholder="Enter Amount" id="amount" required>
-      
-          <select id="currency"></select>
-      
-          <input type="text" placeholder="Enter Description" id="description" required>
+     <!-- Changed the code from popup to static, but used this to learn how to build a form -->
+        <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_popup_form -->
+        <div class="flex center column table">
+            <div name="addForm">
+                <form id="addForm" class="form-container">
+                <h1>Add Transaction</h1>
+            
+                <input type="number" placeholder="Enter Amount" id="amount" required>
+            
+                <select id="currency"></select>
+            
+                <input type="text" placeholder="Enter Description" id="description" required>
 
-          <select id="type">
-                <option value="Income">Income</option>
-                <option value="Expense">Expense</option>
-            </select>
-          <button type="submit" class="btn">Add</button>
-        </form>
-    </div>
+                <select id="type">
+                        <option value="Income">Income</option>
+                        <option value="Expense">Expense</option>
+                    </select>
+                <button type="submit" class="btn button-style">Add</button>
+                </form>
+            </div>
 
-    <div class="form-popup" name="filterForm">
-        <form id="filterForm" class="form-container">
-          <h1>Filter Transactions</h1>
-      
-          <input type="text" placeholder="Enter From Amount" id="fromAmountFilter">
-          <input type="text" placeholder="Enter To Amount" id="toAmountFilter">
-      
-          <select id="currencyFilter"></select>
-      
-          <select id="typeFilter">
-                <option value="Income">Income</option>
-                <option value="Expense">Expense</option>
-            </select>
-          <button type="submit" class="btn">Filter</button>
-        </form>
-    </div>
+            <div class="form-popup" name="filterForm">
+                <form id="filterForm" class="form-container">
+                <h1>Filter Transactions</h1>
+            
+                <input type="number" placeholder="Enter From Amount" id="fromAmountFilter">
+                <input type="number" placeholder="Enter To Amount" id="toAmountFilter">
+            
+                <select id="currencyFilter"></select>
+            
+                <select id="typeFilter">
+                        <option value="Income">Income</option>
+                        <option value="Expense">Expense</option>
+                    </select>
+                <button type="submit" class="btn button-style">Filter</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
 
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../scripts/dash.js"></script>   
 
-      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-      <script src="../scripts/dash.js"></script>
-      
 </body>
 </html>
